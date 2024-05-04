@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.lab4_20200241.databinding.FragmentGeoBinding;
 import com.example.lab4_20200241.dto.Geolocalizacion;
@@ -74,6 +75,15 @@ public class GeoFragment extends Fragment {
                 public void onResponse(Call<Geolocalizacion> call, Response<Geolocalizacion> response) {
                     if(response.isSuccessful()){
                         Geolocalizacion geolocalizacion = response.body();
+
+                        /**
+                        GeoAdapter adapter = new GeoAdapter();
+                        adapter.setContext(GeoFragment.this);
+
+                        binding.recyclerView.setAdapter(adapter);
+                        binding.recyclerView.setLayoutManager(new LinearLayoutManager(GeoFragment.this));
+                         **/
+
                         Log.d("msg-geo", "Ciudad: " + geolocalizacion.getName());
                         Log.d("msg-geo", "Lat: " + geolocalizacion.getLat());
                         Log.d("msg-geo", "Lon: " + geolocalizacion.getLon());
