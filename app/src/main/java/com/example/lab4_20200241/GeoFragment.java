@@ -88,8 +88,8 @@ public class GeoFragment extends Fragment {
                         Log.d("msg-geo", "Lat: " + geolocalizacion.getLat());
                         Log.d("msg-geo", "Lon: " + geolocalizacion.getLon());
                         binding.sitio.setText(geolocalizacion.getName());
-                        binding.lat.setText(geolocalizacion.getLat());
-                        binding.lon.setText(geolocalizacion.getLon());
+//                        binding.lat.setText(geolocalizacion.getLat());
+//                        binding.lon.setText(geolocalizacion.getLon());
                     }  else {
                         Log.d("msg-geo", "error en la respuesta del webservice");
                     }

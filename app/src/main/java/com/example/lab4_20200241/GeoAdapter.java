@@ -11,38 +11,59 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lab4_20200241.dto.Geolocalizacion;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GeoAdapter extends RecyclerView.Adapter<GeoAdapter.GeolocalizacionViewHolder>{
 
     /** Se crean las variables **/
-    private String name;
+    private List<Geolocalizacion> geolocalizacions;
     private Context context;
+
+
+
+    public GeoAdapter(Context context) {
+        this.context = context;
+        this.geolocalizacions = new ArrayList<>();
+    }
+
+    public void setCities(List<Geolocalizacion> geolocalizacions) {
+        this.geolocalizacions = geolocalizacions;
+        notifyDataSetChanged();
+    }
+
 
     /** SE CREARON LOS SIGUIENTES METODOS APARTIR DEL EXTENDS **/
     @NonNull
     @Override
     public GeolocalizacionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         /** Se debe inflarel layout y crear la instancia **/
-        View view = LayoutInflater.from(context).inflate(R.layout.item_rv, parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_geo, parent,false);
         return new GeolocalizacionViewHolder(view);
     }
+
+
+
 
     @Override
     public void onBindViewHolder(@NonNull GeolocalizacionViewHolder holder, int position) {
         /** Indica como se va llenar la informacion **/
 
-        Geolocalizacion e = holder.geolocalizacion;
+        Geolocalizacion geo = geolocalizacions.get(position);
+        holder.geolocalizacion = geo;
 
-        TextView textViewFirstName = holder.itemView.findViewById(R.id. latEncontrada2);
-        textViewFirstName.setText(e.getLat()) ;
 
-        TextView textViewLastName = holder.itemView.findViewById(R.id. lonEncontrada2);
-        textViewLastName.setText(e.getLon()) ;
+        /** FALTA ANALIZAR AQUÍ :D **/
 
     }
 
     @Override
     public int getItemCount() {
-        return 1;
+        if (geolocalizacions == null) {
+            return 0;
+        } else {
+            return geolocalizacions.size();
+        }
     }
 
 
